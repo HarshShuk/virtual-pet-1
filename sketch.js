@@ -1,61 +1,61 @@
-var dog, happyDog, database, foodS, foodStock , position;
-var backgroundImg, dogImg;
+//Create variables here
+var dog,happydDog,database,foodStock,foodS;
 
-function preload()
-{
-  dogImg = loadImage("dogImg.png");
-  happyDog = loadImage("dogImg1.png");  
-  //backgroundImg = loadImage("bg.jpg");
+
+
+
+function preload(){
+  //load images here
+  dogimg = loadImage("images/dogImg.png");
+  dogimg2 = loadImage("images/dogImg1.png");
+}
+
+function setup() {
+  var canvas = createCanvas(displayWidth - 20, displayHeight-30);
+  database = firebase.database();
+  foodStock = database.ref('food');
+
+  //foodStock.on("value",readStock);
+  dog = createSprite(250,250,10,10);
+  dog.addImage(dogimg);
+  dog.scale = 0.2;
+ 
+}
+
+
+function draw() {  
+background(46, 139, 87);
+if(keyWentDown(UP_ARROW)){
+  //writeStock(foodS);
+  dog.addImage(dogimg2);
+}
+
+
+
+
+
+  drawSprites();
+  //add styles here
+  fill("red");
+  textSize(20);
+  stroke(5);
+  text("Press Up Arrow Key To Feed drago milk",100,100);
   
-}
+  
+  
 
-
-function setup(){
-    createCanvas(900,500);
-    database= firebase.database();
-    dog = createSprite(450,300,50,50);
-    dog.addImage("dog",dogImg);
-    dog.scale=0.5  ;
-     foodStock =  database.ref('food');
-    foodStock.on("value",readStock)
-}
-
-function draw(){
-    background("lightblue");
-    
-   
-    if(keyWentDown("space")){
-        
-       WriteStock(foodS)
-       dog.addImage("happyDog",happyDog);   
-    }
-    
-
-   
-    
-    drawSprites();
-    textSize(25);
-    fill("black");
-    text("food remaining:"+ foodS,170,80);
-    text("press space to feed the dog!" ,170 , 120 )
-    
-}
-
-function WriteStock(petFOOD){
-    if(petFOOD<=0){
-        petFOOD=0
-    }
-    else{
-        petFOOD=petFOOD-1;
-    }
-    database.ref('/').update({
-        food:petFOOD
-    })
 }
 function readStock(data){
-    foodS = data.val();
-    
+  foodS=data.val();
 }
+function writeStock(x){
+database.ref('/').update({
+  food:x
+})
+}
+
+
+
 
 
 

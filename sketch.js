@@ -3,8 +3,8 @@ var backgroundImg, dogImg;
 
 function preload()
 {
-  dogImg = loadImage("C:/Users/dell/Desktop/virtual pet-1/virtual-pet-1-master/dogImg.png");
-  happyDog = loadImage("C:/Users/dell/Desktop/virtual pet-1/virtual-pet-1-master/dogImg1.png");  
+  dogImg = loadImage("dogImg.png");
+  happyDog = loadImage("dogImg1.png");  
   //backgroundImg = loadImage("bg.jpg");
   
 }
